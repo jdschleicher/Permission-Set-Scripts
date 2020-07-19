@@ -82,7 +82,7 @@ public FieldPermissions createNewFieldPermissionByPermissionSetAndField(Permissi
     Boolean writeValue = readWriteSettingToValueMap.get('WRITE');
     
     String expectedDelimiter = '.';
-    String newsobjectTypeOfField = fieldToCreateNewPermissionsFor.substringBefore(expectedDelimiter); // 'this'
+    String newsobjectTypeOfField = fieldToCreateNewPermissionsFor.substringBefore(expectedDelimiter); 
 
     FieldPermissions newfp = new FieldPermissions();
     newfp.ParentId = permSet.Id;
