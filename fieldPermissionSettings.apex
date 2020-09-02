@@ -1,6 +1,21 @@
 
 /**  SET FIELDS TO TRUE/FALSE **/
 
+/** 
+* If Object and field combo is plugged in and settings for both read and write are false you will receive a misleading error message along the lines of, "...permission set read is required.."
+* This doesn't make sense because we are trying to set the permissions for both write and read to false.  From the inital trial and error in reproducing this error I believe it shows up when there isn't any read or write permission on the field to begin with
+* Below is a SOQL query to confirm whether or not there are any current permissions on the custom field that can be run before and after to see what the results were and if a false/false permission setting is necessary
+*        SELECT SobjectType, 
+*    Field, ParentId, 
+*    Parent.Label, 
+*    Parent.Name, 
+*    PermissionsRead, 
+*    PermissionsEdit 
+*    FROM FieldPermissions 
+*    WHERE Field = 'Account.Custom_Field__c' 
+*      AND Parent.Name = 'OFFICE_MANAGER'
+**/
+
 List<String> permissionSetNamesToAdjustFieldsFor = new List<String>{
         'OFFICE_MANAGER',
         'REGIONAL_DIRECTOR',
